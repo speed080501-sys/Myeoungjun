@@ -21,9 +21,17 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      background: url('bg.png') center center / cover no-repeat fixed;
       font-family: 'Segoe UI', sans-serif;
       color: #fff;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('bg.png') center center / cover no-repeat;
+      opacity: 0.8;
+      z-index: -1;
     }
 
     @keyframes spotMove {
