@@ -16,12 +16,22 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #0d0d0d;
+      background: url('bg.png') center center / cover no-repeat fixed;
       font-family: 'Segoe UI', sans-serif;
       color: #fff;
     }
 
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 0;
+    }
+
     .container {
+      position: relative;
+      z-index: 1;
       text-align: center;
       padding: 2rem;
     }
