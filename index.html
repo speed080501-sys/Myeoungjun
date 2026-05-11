@@ -63,10 +63,10 @@
       overflow: hidden;
       background: linear-gradient(
         120deg,
-        #5a2e12 0%,
-        #7a3e1a 30%,
-        #3d1c09 60%,
-        #5a2e12 100%
+        rgba(90,46,18,0.6) 0%,
+        rgba(122,62,26,0.6) 30%,
+        rgba(61,28,9,0.6) 60%,
+        rgba(90,46,18,0.6) 100%
       );
       background-size: 300% 100%;
       animation: headerSlide 6s ease-in-out infinite;
@@ -85,10 +85,13 @@
     }
 
     .header-title {
-      flex: 1;
+      position: absolute;
+      left: 0;
+      right: 0;
       display: flex;
       align-items: center;
       justify-content: center;
+      pointer-events: none;
     }
 
     .header-title h1 {
