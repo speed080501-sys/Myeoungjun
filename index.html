@@ -23,13 +23,16 @@
       flex-direction: column;
       font-family: 'Segoe UI', sans-serif;
       color: #fff;
+      background-color: #1c0e05;
     }
 
     body::after {
       content: '';
       position: fixed;
       inset: 0;
-      background: url('bg.png') center top / 100% auto no-repeat;
+      background:
+        linear-gradient(to bottom, transparent 55%, #1c0e05 100%),
+        url('bg.png') center top / 100% auto no-repeat;
       opacity: 0.8;
       z-index: -1;
     }
