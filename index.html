@@ -95,6 +95,17 @@
       pointer-events: none;
     }
 
+    @keyframes titleEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .header-title h1 {
       font-size: calc(2rem - 3px);
       font-weight: 700;
@@ -102,6 +113,8 @@
       color: #f0f0f0;
       text-shadow: 0 2px 8px rgba(0,0,0,0.8);
       white-space: nowrap;
+      opacity: 0;
+      animation: titleEntrance 0.7s ease-out 1s forwards;
     }
 
     .container {
