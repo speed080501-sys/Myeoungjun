@@ -5,12 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>준비 중 | Myeoungjun</title>
   <style>
-    @property --spot-x {
-      syntax: '<percentage>';
-      inherits: false;
-      initial-value: 50%;
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -24,37 +18,6 @@
       font-family: 'Segoe UI', sans-serif;
       color: #fff;
       background-color: #1c0e05;
-    }
-
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        linear-gradient(to bottom, transparent 55%, #1c0e05 100%),
-        url('bg.png') center top / 100% auto no-repeat;
-      opacity: 0.8;
-      z-index: -1;
-    }
-
-    @keyframes spotMove {
-      from { --spot-x: 25%; }
-      to   { --spot-x: 75%; }
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(
-        circle at var(--spot-x) 58%,
-        transparent 0%,
-        transparent 30%,
-        rgba(28, 14, 5, 0.7) 46%,
-        rgba(28, 14, 5, 0.97) 62%
-      );
-      animation: spotMove 3s ease-in-out infinite alternate;
-      z-index: 0;
     }
 
     @keyframes headerSlide {
@@ -127,9 +90,18 @@
       animation: titleEntrance 0.7s ease-out 1s forwards;
     }
 
+    .hero {
+      width: 100%;
+      line-height: 0;
+    }
+
+    .hero img {
+      width: 100%;
+      display: block;
+      opacity: 0.8;
+    }
+
     .container {
-      position: relative;
-      z-index: 1;
       flex: 1;
       display: flex;
       align-items: center;
@@ -155,6 +127,9 @@
       <h1>홈페이지 오픈 준비 중입니다</h1>
     </div>
   </header>
+  <div class="hero">
+    <img src="bg.png" alt="">
+  </div>
   <div class="container"></div>
 </body>
 </html>
