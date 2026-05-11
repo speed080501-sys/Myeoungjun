@@ -27,9 +27,8 @@
     }
 
     @keyframes spotMove {
-      0%   { --spot-x: 25%; }
-      50%  { --spot-x: 75%; }
-      100% { --spot-x: 25%; }
+      from { --spot-x: 25%; }
+      to   { --spot-x: 75%; }
     }
 
     body::before {
@@ -43,7 +42,7 @@
         rgba(28, 14, 5, 0.7) 46%,
         rgba(28, 14, 5, 0.97) 62%
       );
-      animation: spotMove 5s ease-in-out infinite;
+      animation: spotMove 3s ease-in-out infinite alternate;
       z-index: 0;
     }
 
