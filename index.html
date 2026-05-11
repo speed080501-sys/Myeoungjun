@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>준비 중 | Myeoungjun</title>
   <style>
+    @property --spot-x {
+      syntax: '<percentage>';
+      inherits: false;
+      initial-value: 50%;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -18,6 +24,27 @@
       font-family: 'Segoe UI', sans-serif;
       color: #fff;
       background-color: #1c0e05;
+    }
+
+    @keyframes spotMove {
+      from { --spot-x: 25%; }
+      to   { --spot-x: 75%; }
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(
+        circle at var(--spot-x) 58%,
+        transparent 0%,
+        transparent 30%,
+        rgba(28, 14, 5, 0.7) 46%,
+        rgba(28, 14, 5, 0.97) 62%
+      );
+      animation: spotMove 3s ease-in-out infinite alternate;
+      z-index: 0;
+      pointer-events: none;
     }
 
     @keyframes headerSlide {
