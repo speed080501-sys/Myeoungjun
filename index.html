@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>준비 중 | Myeoungjun</title>
   <style>
+    @property --spot-x {
+      syntax: '<percentage>';
+      inherits: false;
+      initial-value: 50%;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -20,20 +26,46 @@
       color: #fff;
     }
 
+    @keyframes spotMove {
+      0%   { --spot-x: 25%; }
+      50%  { --spot-x: 75%; }
+      100% { --spot-x: 25%; }
+    }
+
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.55);
+      background: radial-gradient(
+        circle at var(--spot-x) 58%,
+        transparent 0%,
+        transparent 30%,
+        rgba(28, 14, 5, 0.7) 46%,
+        rgba(28, 14, 5, 0.97) 62%
+      );
+      animation: spotMove 5s ease-in-out infinite;
       z-index: 0;
+    }
+
+    @keyframes headerSlide {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     header {
       position: relative;
       z-index: 1;
       padding: 1rem 2rem;
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(6px);
+      background: linear-gradient(
+        120deg,
+        #5a2e12 0%,
+        #7a3e1a 30%,
+        #3d1c09 60%,
+        #5a2e12 100%
+      );
+      background-size: 300% 100%;
+      animation: headerSlide 6s ease-in-out infinite;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
