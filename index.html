@@ -31,19 +31,18 @@
       to   { --spot-x: 75%; }
     }
 
-    body::before {
-      content: '';
+    .spot-overlay {
       position: fixed;
       inset: 0;
       background: radial-gradient(
-        circle at var(--spot-x) 58%,
+        circle at var(--spot-x) 40%,
         transparent 0%,
-        transparent 30%,
-        rgba(28, 14, 5, 0.7) 46%,
-        rgba(28, 14, 5, 0.97) 62%
+        transparent 20%,
+        rgba(28, 14, 5, 0.7) 38%,
+        rgba(28, 14, 5, 0.97) 55%
       );
       animation: spotMove 3s ease-in-out infinite alternate;
-      z-index: 0;
+      z-index: 10;
       pointer-events: none;
     }
 
@@ -55,7 +54,7 @@
 
     header {
       position: relative;
-      z-index: 1;
+      z-index: 20;
       display: flex;
       align-items: center;
       padding-top: 5px;
@@ -135,17 +134,10 @@
       justify-content: flex-start;
       padding-left: 30%;
     }
-
-    .container h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      color: #f0f0f0;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-    }
   </style>
 </head>
 <body>
+  <div class="spot-overlay"></div>
   <header>
     <div class="logo-wrap">
       <img src="logo.png" alt="Watts 로고">
