@@ -98,22 +98,32 @@
       }
     }
 
-    .page-notice {
-      position: relative;
-      z-index: 20;
-      text-align: center;
-      padding: 1.8rem 1rem;
+    .header-title {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
     }
 
-    .page-notice h1 {
+    .header-title h1 {
       font-family: 'Nanum Gothic', 'Segoe UI', sans-serif;
       font-size: calc(2rem - 3px);
       font-weight: normal;
       letter-spacing: 0.05em;
       color: #f0f0f0;
       text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+      white-space: nowrap;
       opacity: 0;
       animation: titleEntrance 0.7s ease-out 1s forwards;
+    }
+
+    .page-notice {
+      display: none;
     }
 
     .hero {
@@ -136,8 +146,27 @@
     }
 
     @media (max-width: 480px) {
+      .header-title {
+        display: none;
+      }
+
+      .page-notice {
+        display: block;
+        position: relative;
+        z-index: 20;
+        text-align: center;
+        padding: 1.8rem 1rem;
+      }
+
       .page-notice h1 {
+        font-family: 'Nanum Gothic', 'Segoe UI', sans-serif;
         font-size: 1.1rem;
+        font-weight: normal;
+        letter-spacing: 0.05em;
+        color: #f0f0f0;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+        opacity: 0;
+        animation: titleEntrance 0.7s ease-out 1s forwards;
       }
 
       .hero {
@@ -163,6 +192,9 @@
   <header>
     <div class="logo-wrap">
       <img src="logo.png" alt="Watts 로고">
+    </div>
+    <div class="header-title">
+      <h1>홈페이지 오픈 준비 중입니다</h1>
     </div>
   </header>
   <div class="page-notice">
