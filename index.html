@@ -4,14 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>준비 중 | Myeoungjun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'ChosunCentennial';
-      src: url('fonts/ChosunCentennial_ttf.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
     @property --spot-x {
       syntax: '<percentage>';
       inherits: false;
@@ -28,7 +24,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Nanum Gothic', 'Segoe UI', sans-serif;
       color: #fff;
       background-color: #1c0e05;
     }
@@ -91,27 +87,6 @@
       display: block;
     }
 
-    .header-title {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-    }
-
-    @media (max-width: 480px) {
-      .header-title h1 {
-        font-size: 1rem;
-        white-space: normal;
-        text-align: center;
-        padding: 0 5.5rem;
-      }
-    }
-
     @keyframes titleEntrance {
       from {
         opacity: 0;
@@ -123,14 +98,20 @@
       }
     }
 
-    .header-title h1 {
-      font-family: 'ChosunCentennial', 'Segoe UI', sans-serif;
+    .page-notice {
+      position: relative;
+      z-index: 20;
+      text-align: center;
+      padding: 1.8rem 1rem;
+    }
+
+    .page-notice h1 {
+      font-family: 'Nanum Gothic', 'Segoe UI', sans-serif;
       font-size: calc(2rem - 3px);
       font-weight: normal;
       letter-spacing: 0.05em;
       color: #f0f0f0;
       text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-      white-space: nowrap;
       opacity: 0;
       animation: titleEntrance 0.7s ease-out 1s forwards;
     }
@@ -153,6 +134,28 @@
       justify-content: flex-start;
       padding-left: 30%;
     }
+
+    @media (max-width: 480px) {
+      .page-notice h1 {
+        font-size: 1.1rem;
+      }
+
+      .hero {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero img {
+        width: 100%;
+        height: auto;
+      }
+
+      .container {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -161,10 +164,10 @@
     <div class="logo-wrap">
       <img src="logo.png" alt="Watts 로고">
     </div>
-    <div class="header-title">
-      <h1>홈페이지 오픈 준비 중입니다</h1>
-    </div>
   </header>
+  <div class="page-notice">
+    <h1>홈페이지 오픈 준비 중입니다</h1>
+  </div>
   <div class="hero">
     <img src="bg.png" alt="">
   </div>
