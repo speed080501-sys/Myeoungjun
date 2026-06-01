@@ -1,213 +1,386 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>준비 중 | Myeoungjun</title>
-  <style>
-    @font-face {
-      font-family: 'Pretendard';
-      src: url('fonts/Pretendard-SemiBold.woff') format('woff');
-      font-weight: 600;
-      font-style: normal;
-    }
 
-    @property --spot-x {
-      syntax: '<percentage>';
-      inherits: false;
-      initial-value: 50%;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      font-family: 'Pretendard', 'Segoe UI', sans-serif;
-      color: #fff;
-      background-color: #1c0e05;
-    }
-
-    @keyframes spotMove {
-      from { --spot-x: 25%; }
-      to   { --spot-x: 75%; }
-    }
-
-    .spot-overlay {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(
-        circle at var(--spot-x) calc(40% + 70px),
-        transparent 0%,
-        transparent 20%,
-        rgba(28, 14, 5, 0.7) 38%,
-        rgba(28, 14, 5, 0.97) 55%
-      );
-      animation: spotMove 3s ease-in-out infinite alternate;
-      z-index: 10;
-      pointer-events: none;
-    }
-
-    @keyframes headerSlide {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    header {
-      position: relative;
-      z-index: 20;
-      display: flex;
-      align-items: center;
-      padding-top: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      overflow: hidden;
-      background: linear-gradient(
-        120deg,
-        rgba(90,46,18,0.6) 0%,
-        rgba(122,62,26,0.6) 30%,
-        rgba(61,28,9,0.6) 60%,
-        rgba(90,46,18,0.6) 100%
-      );
-      background-size: 300% 100%;
-      animation: headerSlide 6s ease-in-out infinite;
-    }
-
-    .logo-wrap {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      padding: 5px 1.2rem;
-    }
-
-    .logo-wrap img {
-      height: 96px;
-      display: block;
-    }
-
-    @keyframes titleEntrance {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .header-title {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-    }
-
-    .header-title h1 {
-      font-family: 'Pretendard', 'Segoe UI', sans-serif;
-      font-size: calc(2rem - 3px);
-      font-weight: normal;
-      letter-spacing: 0.05em;
-      color: #f0f0f0;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-      white-space: nowrap;
-      opacity: 0;
-      animation: titleEntrance 0.7s ease-out 1s forwards;
-    }
-
-    .page-notice {
-      display: none;
-    }
-
-    .hero {
-      width: 100%;
-      line-height: 0;
-    }
-
-    .hero img {
-      width: 100%;
-      display: block;
-      opacity: 0.8;
-    }
-
-    .container {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      padding-left: 30%;
-    }
-
-    @media (max-width: 480px) {
-      .header-title {
-        display: none;
-      }
-
-      .page-notice {
-        display: block;
-        position: relative;
-        z-index: 20;
-        text-align: center;
-        padding: 1.8rem 1rem;
-      }
-
-      .page-notice h1 {
-        font-family: 'Pretendard', 'Segoe UI', sans-serif;
-        font-size: 1.1rem;
-        font-weight: normal;
-        letter-spacing: 0.05em;
-        color: #f0f0f0;
-        text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-        opacity: 0;
-        animation: titleEntrance 0.7s ease-out 1s forwards;
-      }
-
-      .hero {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .hero img {
-        width: 100%;
-        height: auto;
-        transform: translateY(-20%) scale(1.2);
-      }
-
-      .container {
-        display: none;
-      }
-    }
-  </style>
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Watts Korea - Always with you</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#6e3900",
+                      "secondary": "#4e6700",
+                      "surface-container": "#eeeeec",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-container": "#ffbc87",
+                      "on-primary-container": "#eec1a4",
+                      "on-primary-fixed-variant": "#5f402a",
+                      "tertiary-fixed": "#ffdcc3",
+                      "primary-fixed-dim": "#eabda0",
+                      "on-secondary-fixed": "#151f00",
+                      "on-error": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#c6f34c",
+                      "primary-container": "#6f4e37",
+                      "on-background": "#1a1c1b",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#1a1c1b",
+                      "inverse-on-surface": "#f1f1ef",
+                      "on-secondary-container": "#536d00",
+                      "surface": "#f9f9f7",
+                      "on-surface-variant": "#50453e",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#ffb77d",
+                      "surface-bright": "#f9f9f7",
+                      "surface-container-low": "#f4f4f2",
+                      "surface-container-lowest": "#ffffff",
+                      "text-charcoal": "#2D2926",
+                      "outline": "#82746d",
+                      "secondary-fixed": "#c6f34c",
+                      "inverse-surface": "#2f3130",
+                      "surface-taupe": "#E8E4E1",
+                      "tertiary": "#613200",
+                      "on-tertiary-fixed": "#2f1500",
+                      "on-primary-fixed": "#2d1604",
+                      "surface-container-high": "#e8e8e6",
+                      "surface-container-highest": "#e2e3e1",
+                      "primary-fixed": "#ffdcc6",
+                      "outline-variant": "#d4c3ba",
+                      "inverse-primary": "#eabda0",
+                      "secondary-fixed-dim": "#aad630",
+                      "border-muted": "#D1CEC7",
+                      "tertiary-container": "#834500",
+                      "background": "#f9f9f7",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#3a4d00",
+                      "surface-dim": "#dadad8",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#79573f",
+                      "primary": "#553722",
+                      "surface-variant": "#e2e3e1"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "margin-desktop": "40px",
+                      "container-max": "1280px",
+                      "margin-mobile": "16px",
+                      "stack-sm": "16px",
+                      "stack-md": "32px",
+                      "stack-lg": "64px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Pretendard"
+                      ],
+                      "label-sm": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-md": [
+                              "Pretendard"
+                      ],
+                      "display-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-sm": [
+                              "Pretendard"
+                      ],
+                      "body-md": [
+                              "Pretendard"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Pretendard', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
 </head>
-<body>
-  <div class="spot-overlay"></div>
-  <header>
-    <div class="logo-wrap">
-      <img src="logo.png" alt="Watts 로고">
-    </div>
-    <div class="header-title">
-      <h1>홈페이지 오픈 준비 중입니다</h1>
-    </div>
-  </header>
-  <div class="page-notice">
-    <h1>홈페이지 오픈 준비 중입니다</h1>
-  </div>
-  <div class="hero">
-    <img src="bg.png" alt="">
-  </div>
-  <div class="container"></div>
-</body>
-</html>
+<body class="bg-surface text-on-surface antialiased pt-16 pb-20 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md flex justify-between items-center px-margin-mobile h-16 w-full">
+<button aria-label="Menu" class="text-on-surface-variant hover:opacity-70 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+<div class="font-display-lg-mobile text-display-lg-mobile font-bold text-primary dark:text-primary-fixed-dim tracking-tighter">
+            WATTS
+        </div>
+<button aria-label="Search" class="text-on-surface-variant hover:opacity-70 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+</header>
+<main class="max-w-container-max mx-auto w-full">
+<!-- Hero Section -->
+<section class="w-full relative h-[70vh] min-h-[500px] flex items-end pb-stack-lg px-margin-mobile md:px-margin-desktop bg-surface-taupe">
+<img alt="Always by your side, Watts Korea 1st Store Opening" class="absolute inset-0 w-full h-full object-cover z-0 mix-blend-multiply opacity-90" src="https://lh3.googleusercontent.com/aida/AP1WRLvAdE0jbjGvU2Ig9_Ijwqy7-f73Q32cPY3PLVSAIVEsF671g_4Wvs3U13vtLxVc55Dc065gsJCG4ecg9N2ZDFUj5hC8t239asihJVrgXYPUEqJqpWEAxF9bhTQHAyuFKX5CcF11TAOTVE8k9SV82FuPngA4n0zDOQqMIo0GQRPEAKuCReOwfWK9CR43bupJSJGV2RH2wKKRN9r_9uQUyh7h3u0QIZBcUgVHlGHFx83oEbZJDXJMV6JvVGs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim/80 to-transparent z-10"></div>
+<div class="relative z-20 w-full max-w-2xl">
+<span class="inline-block px-4 py-2 bg-surface-container-highest rounded-full text-primary font-label-sm text-label-sm mb-4">GRAND OPENING</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary font-bold mb-4">
+                    늘 당신 곁에,<br/>와츠 코리아 1호점 오픈
+                </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+                    당신의 일상을 더 따뜻하고 풍요롭게 만들 새로운 라이프스타일 큐레이션을 지금 만나보세요.
+                </p>
+<button class="mt-8 px-8 py-4 bg-secondary text-on-secondary rounded-lg font-body-md text-body-md font-bold hover:bg-secondary-container hover:text-on-secondary-container transition-colors shadow-[0_4px_20px_rgba(111,78,55,0.08)]">
+                    방문 예약하기
+                </button>
+</div>
+</section>
+<!-- New Arrival Section (Bento Grid) -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary font-bold mb-2">New Arrival</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">이번 주 새롭게 입고된 아이템</p>
+</div>
+<a class="font-body-md text-body-md text-secondary hover:underline flex items-center gap-1 hidden md:flex" href="products.html">
+                    전체보기 <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Large Featured Item -->
+<article class="md:col-span-8 group cursor-pointer relative bg-surface-container-lowest rounded-xl overflow-hidden aspect-square md:aspect-auto md:h-[500px]">
+<img alt="White Wood Kitchen Goods Collection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLtcrxdZE1Xk5Yn7iL6sMKMY1CZjKReiIRkLoyjBao-JG_4oQdvu9sQYXu36M0OZAOkYtKwaF5dtloBqtLz2N1xDRwy6O2IIwpGUfPbsigBphbmUpvolR_HLxk_o3ZvPL3Xv5c8Qi30rETHeqNPQXimxgyHF7sgRg3sudQJlCsUVUsLlzkmC6ZsfSxUKznpeIXORyaJmZVWweyEkxMheaECdN6HDevry1INlEy37FQQOjUK92855xJftH1E"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6 md:p-8 w-full">
+<div class="flex gap-2 mb-3">
+<span class="px-3 py-1 bg-surface-taupe rounded-full text-primary font-label-sm text-label-sm">Kitchen</span>
+<span class="px-3 py-1 bg-surface-taupe rounded-full text-primary font-label-sm text-label-sm">New</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-surface-container-lowest font-bold mb-2 group-hover:text-tertiary-fixed transition-colors">화이트 우드 키친웨어 시리즈</h3>
+<p class="font-body-md text-body-md text-surface-container line-clamp-2">따뜻한 우드 톤과 깔끔한 화이트의 조화로 주방에 감성을 더합니다.</p>
+</div>
+</article>
+<!-- Small Items Column -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<article class="group cursor-pointer relative bg-surface-container-lowest rounded-xl overflow-hidden flex-1 aspect-[4/3] md:aspect-auto">
+<img alt="Modern Desk Clocks Collection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLuP8NpyY7C7kDz3WWNRgD_0fjLiNnIALDYN3yFYCXbG0m1EGd3tUPttOSOx_8P38but-FshLCll-hV-orl7vNtbncHFqXbb3ksshoRf9jI69pR0Xtvun4DQtCVbkkQ-ji7L-YsjCzHdIX9ggRJdLQFDY2_1S4SqtxJjNpAddQiAdqc5ExYk3mSh5w4Uwp6oBIPfrezxjeeN6I7-byBI4ioMAuH4oD4H2KcJiiHeZQp10zoyo2eWlgQDJCw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6 w-full">
+<span class="px-3 py-1 bg-surface-taupe rounded-full text-primary font-label-sm text-label-sm mb-3 inline-block">Living</span>
+<h3 class="font-headline-sm text-headline-sm text-surface-container-lowest font-bold">모던 데스크 시계 컬렉션</h3>
+</div>
+</article>
+<!-- Decorative/Text Card -->
+<article class="bg-primary-container text-on-primary-container rounded-xl p-8 flex flex-col justify-center flex-1">
+<span class="material-symbols-outlined text-4xl mb-4 text-tertiary-fixed">eco</span>
+<h3 class="font-headline-sm text-headline-sm font-bold mb-2">지속 가능한 일상</h3>
+<p class="font-body-md text-body-md opacity-90">환경을 생각하는 소재로 만든 새로운 라이프스타일 굿즈를 제안합니다.</p>
+</article>
+</div>
+</div>
+</section>
+<!-- Our Story Banner -->
+<section class="py-stack-md px-margin-mobile md:px-margin-desktop">
+<div class="bg-surface-taupe rounded-xl md:rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="z-10 max-w-lg text-center md:text-left">
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary font-bold mb-4 tracking-tighter">
+                        늘 함께하는 와츠
+                    </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6">
+                        단순한 물건을 넘어, 당신의 일상에 잔잔한 기쁨을 선사하는 라이프스타일 파트너가 되겠습니다.
+                    </p>
+<button class="px-6 py-3 border border-primary text-primary rounded-lg font-body-md text-body-md font-bold hover:bg-primary hover:text-on-primary transition-colors inline-flex items-center gap-2">
+                        브랜드 스토리 보기
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="z-10 w-full md:w-auto flex justify-center">
+<div class="w-48 h-48 rounded-full bg-surface-container-lowest shadow-[0_4px_20px_rgba(111,78,55,0.08)] flex items-center justify-center p-8">
+<span class="material-symbols-outlined text-8xl text-secondary opacity-80" style="font-variation-settings: 'wght' 200;">storefront</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Find Store -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop mb-stack-lg">
+<div class="text-center mb-12">
+<h2 class="font-headline-md text-headline-md text-primary font-bold mb-2">Find Store</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">가까운 매장에서 와츠를 만나보세요</p>
+</div>
+<div class="max-w-4xl mx-auto bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_rgba(111,78,55,0.08)] overflow-hidden flex flex-col md:flex-row">
+<div class="md:w-2/5 bg-surface-container-high p-8 flex items-center justify-center relative min-h-[250px]">
+<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(var(--tw-colors-primary) 1px, transparent 1px); background-size: 20px 20px;"></div>
+<span class="material-symbols-outlined text-8xl text-primary z-10" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<div class="p-8 md:p-12 md:w-3/5 flex flex-col justify-center">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-label-sm w-fit mb-4">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+                        1호점 신규 오픈
+                    </div>
+<h3 class="font-headline-md text-headline-md text-primary font-bold mb-4">와츠 코리아 강남 플래그십 스토어</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-start gap-2 mb-2">
+<span class="material-symbols-outlined text-xl mt-1 text-outline">map</span>
+<span>서울시 강남구 테헤란로 123<br/>와츠빌딩 1-2층</span>
+</p>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-xl text-outline">schedule</span>
+<span>매일 10:00 - 22:00</span>
+</p>
+<button class="w-full md:w-auto px-8 py-3 bg-primary text-on-primary rounded-lg font-body-md text-body-md font-bold hover:bg-primary/90 transition-colors">
+                        길찾기
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full grid grid-cols-4 items-center py-2 pb-safe bg-surface dark:bg-surface-dim shadow-[0_-4px_20px_rgba(111,78,55,0.08)] z-50 md:hidden" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100vw;max-width:100vw;">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed active:scale-90 transition-transform" href="index.html">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors active:scale-90 transition-transform" href="products.html">
+<span class="material-symbols-outlined text-2xl">search</span>
+<span class="font-label-sm text-label-sm mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors active:scale-90 transition-transform" href="stores.html">
+<span class="material-symbols-outlined text-2xl">storefront</span>
+<span class="font-label-sm text-label-sm mt-1">Stores</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors active:scale-90 transition-transform" href="brand-story.html">
+<span class="material-symbols-outlined text-2xl">person</span>
+<span class="font-label-sm text-label-sm mt-1">My Page</span>
+</a>
+</nav>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-high flex flex-col gap-stack-sm px-margin-mobile py-stack-lg w-full mb-16 md:mb-0">
+<div class="font-display-lg text-display-lg font-bold text-primary mb-4 tracking-tighter">WATTS</div>
+<div class="flex flex-col md:flex-row gap-4 md:gap-8 mb-8">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="stores.html">Contact Us</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="stores.html">Store Locator</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="brand-story.html">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="brand-story.html">Terms of Service</a>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant opacity-70">
+            © 2024 WATTS Korea. Always with you.
+        </div>
+</footer>
+<script>
+(() => {
+  const routes = [
+    { pattern: /^watts$/i, href: "index.html" },
+    { pattern: /^home$/i, href: "index.html" },
+    { pattern: /^search$/i, href: "products.html" },
+    { pattern: /^stores$/i, href: "stores.html" },
+    { pattern: /^my page$/i, href: "brand-story.html" },
+    { pattern: /^store locator$/i, href: "stores.html" },
+    { pattern: /전체보기|제품 구경하기/i, href: "products.html" },
+    { pattern: /브랜드 스토리 보기/i, href: "brand-story.html" },
+    { pattern: /방문 예약하기|길찾기/i, href: "stores.html" },
+    { pattern: /^menu$/i, href: "brand-story.html" }
+  ];
+
+  const getLabel = (element) =>
+    (element.innerText || element.getAttribute("aria-label") || "")
+      .replace(/\s+/g, " ")
+      .trim();
+
+  const findRoute = (element) => {
+    const label = getLabel(element);
+    const icon = element.querySelector(".material-symbols-outlined")?.textContent?.trim();
+    return routes.find((route) => route.pattern.test(label)) ||
+      routes.find((route) => icon && route.pattern.test(icon));
+  };
+
+  document.querySelectorAll("a, button, header h1, header div[class*='font-display']").forEach((element) => {
+    const route = findRoute(element);
+    if (!route) return;
+
+    if (element.tagName === "A") {
+      element.href = route.href;
+      return;
+    }
+
+    element.tabIndex = 0;
+    element.setAttribute("role", "link");
+    element.style.cursor = "pointer";
+    element.addEventListener("click", () => {
+      window.location.href = route.href;
+    });
+    element.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        window.location.href = route.href;
+      }
+    });
+  });
+})();
+</script>
+</body></html>

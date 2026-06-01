@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>와츠의 추천 제품 - WATTS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f9f9f7;
+            color: #1a1c1b;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "secondary": "#4e6700",
+                        "surface-container": "#eeeeec",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#ffbc87",
+                        "on-primary-container": "#eec1a4",
+                        "on-primary-fixed-variant": "#5f402a",
+                        "tertiary-fixed": "#ffdcc3",
+                        "primary-fixed-dim": "#eabda0",
+                        "on-secondary-fixed": "#151f00",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#c6f34c",
+                        "primary-container": "#6f4e37",
+                        "on-background": "#1a1c1b",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1a1c1b",
+                        "inverse-on-surface": "#f1f1ef",
+                        "on-secondary-container": "#536d00",
+                        "surface": "#f9f9f7",
+                        "on-surface-variant": "#50453e",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "surface-bright": "#f9f9f7",
+                        "surface-container-low": "#f4f4f2",
+                        "surface-container-lowest": "#ffffff",
+                        "text-charcoal": "#2D2926",
+                        "outline": "#82746d",
+                        "secondary-fixed": "#c6f34c",
+                        "inverse-surface": "#2f3130",
+                        "surface-taupe": "#E8E4E1",
+                        "tertiary": "#613200",
+                        "on-tertiary-fixed": "#2f1500",
+                        "on-primary-fixed": "#2d1604",
+                        "surface-container-high": "#e8e8e6",
+                        "surface-container-highest": "#e2e3e1",
+                        "primary-fixed": "#ffdcc6",
+                        "outline-variant": "#d4c3ba",
+                        "inverse-primary": "#eabda0",
+                        "secondary-fixed-dim": "#aad630",
+                        "border-muted": "#D1CEC7",
+                        "tertiary-container": "#834500",
+                        "background": "#f9f9f7",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#3a4d00",
+                        "surface-dim": "#dadad8",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#79573f",
+                        "primary": "#553722",
+                        "surface-variant": "#e2e3e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "16px",
+                        "stack-md": "32px",
+                        "stack-lg": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Pretendard"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Pretendard"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "headline-sm": ["Pretendard"],
+                        "body-md": ["Pretendard"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface pb-24 md:pb-0 pt-16">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md">
+<div class="flex justify-between items-center px-margin-mobile h-16 w-full max-w-container-max mx-auto">
+<button aria-label="Menu" class="text-primary dark:text-primary-fixed-dim hover:opacity-70 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile font-bold text-primary dark:text-primary-fixed-dim tracking-tighter">WATTS</h1>
+<button aria-label="Search" class="text-primary dark:text-primary-fixed-dim hover:opacity-70 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile mt-stack-md">
+<!-- Headline -->
+<section class="mb-stack-md">
+<h2 class="font-headline-sm text-headline-sm text-primary mb-stack-sm">와츠의 추천 제품</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">일상에 자연스럽게 스며드는 실용적인 아이템들을 만나보세요.</p>
+</section>
+<!-- Category Filter -->
+<div class="flex gap-2 overflow-x-auto pb-4 mb-stack-md no-scrollbar">
+<button class="px-4 py-2 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm whitespace-nowrap">전체보기</button>
+<button class="px-4 py-2 rounded-full bg-surface-taupe text-primary font-label-sm text-label-sm whitespace-nowrap">Lifestyle</button>
+<button class="px-4 py-2 rounded-full bg-surface-taupe text-primary font-label-sm text-label-sm whitespace-nowrap">Kitchen</button>
+<button class="px-4 py-2 rounded-full bg-surface-taupe text-primary font-label-sm text-label-sm whitespace-nowrap">Beauty</button>
+<button class="px-4 py-2 rounded-full bg-surface-taupe text-primary font-label-sm text-label-sm whitespace-nowrap">Stationery</button>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+<!-- Product Card 1 -->
+<article class="flex flex-col gap-2 group cursor-pointer">
+<div class="relative aspect-square w-full rounded-xl overflow-hidden bg-surface-container-lowest flex items-center justify-center p-4">
+<img alt="우산용 슈슈 (베이지)" class="object-contain w-full h-full mix-blend-multiply transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLuuhbZtjuIH7YyVnRRVm_4-jSi2KHnnATZ_WkZjsiNCIj2wSdyt_5JzySsl1tNb1pOuMLnl4B-Ls8PHMYMOmOrx3aI2tUSBdppq6ywIvwFxREFkSAajhM5f4NbBcI_tUAPp3sZPqRiizas_u2kAyRluDYyOZglwUI28L2aSMIaMze6-_GTr2s7oelGC-DasfB8hrJ7phflNFl8zIM9Go8V1s_PzzM9dsg_3fxEJyzLejKtldvhSiz3nJPI"/>
+</div>
+<div class="flex flex-col px-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">Lifestyle</span>
+<h3 class="font-body-md text-body-md font-medium text-on-surface line-clamp-2">수분 흡수 우산용 슈슈 (베이지)</h3>
+<p class="font-headline-sm text-headline-sm text-primary mt-1">275원</p>
+</div>
+</article>
+<!-- Product Card 2 -->
+<article class="flex flex-col gap-2 group cursor-pointer">
+<div class="relative aspect-square w-full rounded-xl overflow-hidden bg-surface-container-lowest flex items-center justify-center p-4">
+<img alt="다용도 파우치 (블랙)" class="object-contain w-full h-full mix-blend-multiply transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLujpGfbsqt6YHJpkM6DmK-ci5ntWkhQzZHoZApoYljZEza6eX3nDiTBH7Bk2GqJj1HSzc72F4VSou8KWwThCJsf94x5PyKEMOJMA8BXHp2mhgPkDNFi8-QjP3p8LOmtGL57BERYZtCb_ss04JNoepEC4E6NZ58MVqkAT-FXgqH6GU2PjW0ZdUTLrmBU3wAJA9RcFM2SnG2sb80PFiOlzoLX-UC5pXcm0BCeJ4-48sGh93tGycSNzm6nbvw"/>
+</div>
+<div class="flex flex-col px-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">Lifestyle</span>
+<h3 class="font-body-md text-body-md font-medium text-on-surface line-clamp-2">다용도 스트랩 파우치 (블랙)</h3>
+<p class="font-headline-sm text-headline-sm text-primary mt-1">385원</p>
+</div>
+</article>
+<!-- Product Card 3 -->
+<article class="flex flex-col gap-2 group cursor-pointer">
+<div class="relative aspect-square w-full rounded-xl overflow-hidden bg-surface-container-lowest flex items-center justify-center p-4">
+<img alt="스트링 파우치 백 (카키)" class="object-contain w-full h-full mix-blend-multiply transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLtaYfqPF31uUKVcVCrsD1rg-KREeDvKeceSem4c_dS7pusIglKoN8Ml6PZFtjiOz-rvRqYPbR7ZhjUUonyalYf7wmENaScwuLVm13Rq4S8hh_176HBeZIxc1QsZ3YZcQ7NdW9Lg5qoi2zXS-ACBSYkzLLfCyGt4VVja5UeRSQy0jDjqp4OoruRHhHlUesnE3xgun1ZITd904C385HlmW-v8DZazXrWuuUT5elpmz5mvsD7ZI7EliLPqdS4"/>
+</div>
+<div class="flex flex-col px-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">Lifestyle</span>
+<h3 class="font-body-md text-body-md font-medium text-on-surface line-clamp-2">경량 스트링 파우치 백 (카키)</h3>
+<p class="font-headline-sm text-headline-sm text-primary mt-1">500원</p>
+</div>
+</article>
+<!-- Product Card 4 -->
+<article class="flex flex-col gap-2 group cursor-pointer">
+<div class="relative aspect-square w-full rounded-xl overflow-hidden bg-surface-container-lowest flex items-center justify-center p-4">
+<img alt="다용도 파우치 (그레이)" class="object-contain w-full h-full mix-blend-multiply transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLuMVEmProb25YKbQ1MTEUJecCBUa2UseYoT30B21XV4su5xWGxex-MP6e2xWHn_t_EE5QxIzcZ58jvhG-76a1rPClVVnQk53zmrhTAlmlR1mx8MtjX6yq-Y3cryuQ0Y_Jz-lQJvqpysayyZ1dTZEZw5OXe69kTcwszvngAfyme2rVwHR_CmJmI6t7rOfwep91JLgBvvNugZzIkyEsTZLI0_ag2HE2u3RJQF-iXroPf6dy8G_HWz33-1JQ"/>
+</div>
+<div class="flex flex-col px-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">Lifestyle</span>
+<h3 class="font-body-md text-body-md font-medium text-on-surface line-clamp-2">다용도 스트랩 파우치 (그레이)</h3>
+<p class="font-headline-sm text-headline-sm text-primary mt-1">385원</p>
+</div>
+</article>
+<!-- Product Card 5 -->
+<article class="flex flex-col gap-2 group cursor-pointer">
+<div class="relative aspect-square w-full rounded-xl overflow-hidden bg-surface-container-lowest flex items-center justify-center p-4">
+<img alt="우산용 슈슈 (차콜)" class="object-contain w-full h-full mix-blend-multiply transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLsRop9RsR4OqGMwfay02G1HsbaOBZ8wEExV6vkEC51P74T97ZEWdpmBdhzZqU9bjQ6NjcXaeXOsMsRW-Gt9oUowEmv2H-Gx_o8g8jiE9Jlowws67aNnxD00NjDVnBmwp0u7rRbOt7xto2iHk3uA-6FgBA528I12SSSimLG8YVg-oina5nZYU3hWFaghNWWyHtD_xYV3l4zCdBzwZcfjYV0ZIwi-xpDN_fGVYpsRL1cWR0--mDd1f9i-AD4"/>
+</div>
+<div class="flex flex-col px-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">Lifestyle</span>
+<h3 class="font-body-md text-body-md font-medium text-on-surface line-clamp-2">수분 흡수 우산용 슈슈 (차콜)</h3>
+<p class="font-headline-sm text-headline-sm text-primary mt-1">275원</p>
+</div>
+</article>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface dark:bg-surface-dim shadow-[0_-4px_20px_rgba(111,78,55,0.08)] md:hidden">
+<div class="fixed bottom-0 left-0 w-full grid grid-cols-4 items-center py-2 pb-safe max-w-container-max mx-auto" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100vw;max-width:100vw;">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed hover:text-secondary transition-colors active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="search" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="storefront">storefront</span>
+<span class="font-label-sm text-label-sm">Stores</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">My Page</span>
+</button>
+</div>
+</nav>
+<style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<script>
+(() => {
+  const routes = [
+    { pattern: /^watts$/i, href: "index.html" },
+    { pattern: /^home$/i, href: "index.html" },
+    { pattern: /^search$/i, href: "products.html" },
+    { pattern: /^stores$/i, href: "stores.html" },
+    { pattern: /^my page$/i, href: "brand-story.html" },
+    { pattern: /^store locator$/i, href: "stores.html" },
+    { pattern: /전체보기|제품 구경하기/i, href: "products.html" },
+    { pattern: /브랜드 스토리 보기/i, href: "brand-story.html" },
+    { pattern: /방문 예약하기|길찾기/i, href: "stores.html" },
+    { pattern: /^menu$/i, href: "brand-story.html" }
+  ];
+
+  const getLabel = (element) =>
+    (element.innerText || element.getAttribute("aria-label") || "")
+      .replace(/\s+/g, " ")
+      .trim();
+
+  const findRoute = (element) => {
+    const label = getLabel(element);
+    const icon = element.querySelector(".material-symbols-outlined")?.textContent?.trim();
+    return routes.find((route) => route.pattern.test(label)) ||
+      routes.find((route) => icon && route.pattern.test(icon));
+  };
+
+  document.querySelectorAll("a, button, header h1, header div[class*='font-display']").forEach((element) => {
+    const route = findRoute(element);
+    if (!route) return;
+
+    if (element.tagName === "A") {
+      element.href = route.href;
+      return;
+    }
+
+    element.tabIndex = 0;
+    element.setAttribute("role", "link");
+    element.style.cursor = "pointer";
+    element.addEventListener("click", () => {
+      window.location.href = route.href;
+    });
+    element.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        window.location.href = route.href;
+      }
+    });
+  });
+})();
+</script>
+</body></html>

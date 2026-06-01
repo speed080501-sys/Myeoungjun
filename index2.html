@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>준비 중 | Myeoungjun</title>
+  <style>
+    @font-face {
+      font-family: 'Pretendard';
+      src: url('fonts/Pretendard-SemiBold.woff') format('woff');
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    @property --spot-x {
+      syntax: '<percentage>';
+      inherits: false;
+      initial-value: 50%;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Pretendard', 'Segoe UI', sans-serif;
+      color: #fff;
+      background-color: #1c0e05;
+    }
+
+    @keyframes spotMove {
+      from { --spot-x: 25%; }
+      to   { --spot-x: 75%; }
+    }
+
+    .spot-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(
+        circle at var(--spot-x) calc(40% + 70px),
+        transparent 0%,
+        transparent 20%,
+        rgba(28, 14, 5, 0.7) 38%,
+        rgba(28, 14, 5, 0.97) 55%
+      );
+      animation: spotMove 3s ease-in-out infinite alternate;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    @keyframes headerSlide {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      position: relative;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      background: linear-gradient(
+        120deg,
+        rgba(90,46,18,0.6) 0%,
+        rgba(122,62,26,0.6) 30%,
+        rgba(61,28,9,0.6) 60%,
+        rgba(90,46,18,0.6) 100%
+      );
+      background-size: 300% 100%;
+      animation: headerSlide 6s ease-in-out infinite;
+    }
+
+    .logo-wrap {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      padding: 5px 1.2rem;
+    }
+
+    .logo-wrap img {
+      height: 96px;
+      display: block;
+    }
+
+    @keyframes titleEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header-title {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .header-title h1 {
+      font-family: 'Pretendard', 'Segoe UI', sans-serif;
+      font-size: calc(2rem - 3px);
+      font-weight: normal;
+      letter-spacing: 0.05em;
+      color: #f0f0f0;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+      white-space: nowrap;
+      opacity: 0;
+      animation: titleEntrance 0.7s ease-out 1s forwards;
+    }
+
+    .page-notice {
+      display: none;
+    }
+
+    .hero {
+      width: 100%;
+      line-height: 0;
+    }
+
+    .hero img {
+      width: 100%;
+      display: block;
+      opacity: 0.8;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 30%;
+    }
+
+    @media (max-width: 480px) {
+      .header-title {
+        display: none;
+      }
+
+      .page-notice {
+        display: block;
+        position: relative;
+        z-index: 20;
+        text-align: center;
+        padding: 1.8rem 1rem;
+      }
+
+      .page-notice h1 {
+        font-family: 'Pretendard', 'Segoe UI', sans-serif;
+        font-size: 1.1rem;
+        font-weight: normal;
+        letter-spacing: 0.05em;
+        color: #f0f0f0;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+        opacity: 0;
+        animation: titleEntrance 0.7s ease-out 1s forwards;
+      }
+
+      .hero {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero img {
+        width: 100%;
+        height: auto;
+        transform: translateY(-20%) scale(1.2);
+      }
+
+      .container {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="spot-overlay"></div>
+  <header>
+    <div class="logo-wrap">
+      <img src="logo.png" alt="Watts 로고">
+    </div>
+    <div class="header-title">
+      <h1>홈페이지 오픈 준비 중입니다</h1>
+    </div>
+  </header>
+  <div class="page-notice">
+    <h1>홈페이지 오픈 준비 중입니다</h1>
+  </div>
+  <div class="hero">
+    <img src="bg.png" alt="">
+  </div>
+  <div class="container"></div>
+</body>
+</html>
