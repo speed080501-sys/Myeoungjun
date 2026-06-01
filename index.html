@@ -31,6 +31,7 @@
       font-family: 'Pretendard', 'Segoe UI', sans-serif;
       color: #fff;
       background-color: #1c0e05;
+      overflow-x: hidden;
     }
 
     @keyframes spotMove {
@@ -133,6 +134,7 @@
     .hero {
       width: 100%;
       line-height: 0;
+      overflow: hidden;
     }
 
     .hero img {
@@ -222,8 +224,20 @@
       }
 
       .work-link {
-        right: 12px;
-        bottom: 12px;
+        left: 14px;
+        right: auto;
+        bottom: max(14px, env(safe-area-inset-bottom));
+        z-index: 50;
+        width: 90px;
+        min-width: 90px;
+        height: 42px;
+        padding: 0 16px;
+        border-color: rgba(255, 255, 255, 0.42);
+        color: #fff;
+        background: rgba(78, 103, 0, 0.94);
+        font-size: 0.88rem;
+        font-weight: 600;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.42);
       }
     }
   </style>
